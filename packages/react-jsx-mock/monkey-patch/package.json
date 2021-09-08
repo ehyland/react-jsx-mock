@@ -1,0 +1,4 @@
+{
+  "main": "dist/react-jsx-mock-monkey-patch.cjs.js",
+  "module": "dist/react-jsx-mock-monkey-patch.esm.js"
+}

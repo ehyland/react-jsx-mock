@@ -1,0 +1,23 @@
+{
+  "name": "react-jsx-mock",
+  "version": "1.0.0",
+  "description": "Mock components through JSX",
+  "main": "dist/react-jsx-mock.cjs.js",
+  "module": "dist/react-jsx-mock.esm.js",
+  "author": "Eamon Hyland",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^17.0.19",
+    "react": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "monkey-patch.ts",
+      "jest-expect.ts"
+    ]
+  }
+}

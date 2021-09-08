@@ -1,0 +1,4 @@
+{
+  "main": "dist/react-jsx-mock-jest-expect.cjs.js",
+  "module": "dist/react-jsx-mock-jest-expect.esm.js"
+}
