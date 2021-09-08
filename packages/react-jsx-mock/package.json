@@ -16,6 +16,11 @@
   "peerDependencies": {
     "react": "*"
   },
+  "files": [
+    "/dist",
+    "/monkey-patch",
+    "/jest-expect"
+  ],
   "preconstruct": {
     "entrypoints": [
       "index.ts",

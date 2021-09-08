@@ -1,2 +1,5 @@
 node_modules
 dist
+
+# This file is created on release
+/packages/react-jsx-mock/README.md

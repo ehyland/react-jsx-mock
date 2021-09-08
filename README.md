@@ -54,7 +54,7 @@ expect(MockMenu.mock.all().map(({ props }) => props.id)).toEqual([
 
 ## Inspiration
 
-`react-jsx-mock` is inspired by [`react-remock`](https://github.com/theKashey/react-remock) with the addition
+`react-jsx-mock` is inspired by [`react-remock`](https://github.com/theKashey/react-remock) with the addition of
 
 - Mocked component render tracking
 - Jest assertion helpers
