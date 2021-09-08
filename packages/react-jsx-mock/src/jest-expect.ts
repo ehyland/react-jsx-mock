@@ -1,9 +1,9 @@
-import { ComponentProps } from 'react';
-import { MockedComponent } from './mock-component';
+import type { ComponentProps, ComponentType } from 'react';
+import type { MockedComponent } from './mock-component';
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R, T extends ComponentType> {
       toBeRenderedWithProps(props: ComponentProps<T>): R;
       toBeRenderedWithPropsMatching(props: Partial<ComponentProps<T>>): R;
     }
