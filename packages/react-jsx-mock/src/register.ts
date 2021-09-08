@@ -20,5 +20,5 @@ export const register = {
     return undefined;
   },
 
-  delete: (key: RegisterKey) => internalRegister.delete(key)
+  delete: (key: RegisterKey) => internalRegister.delete(key),
 };

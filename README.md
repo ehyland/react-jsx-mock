@@ -31,7 +31,7 @@ import { mockComponent } from 'react-jsx-mock';
 const MockMenu = mockComponent(Menu);
 
 // mock a component, providing a mock implementation
-const MockMenu = mockComponent(Menu, props => (
+const MockMenu = mockComponent(Menu, (props) => (
   <div id={props.id} data-testid="mocked-menu" />
 ));
 
@@ -48,7 +48,7 @@ expect(MockMenu.mock.first().props.href).toBe('https://reactjs.org');
 expect(MockMenu.mock.all().map(({ props }) => props.id)).toEqual([
   'a',
   'b',
-  'c'
+  'c',
 ]);
 ```
 

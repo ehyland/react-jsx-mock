@@ -13,7 +13,7 @@ export type MockedComponent<T> = ComponentType<T> & {
 
 export function mockComponent<T>(
   type: ComponentType<T>,
-  mock?: ComponentType<T>
+  mock?: ComponentType<T>,
 ): MockedComponent<T> {
   let idSequence = 0;
   const generateId = () => idSequence++;
@@ -23,7 +23,7 @@ export function mockComponent<T>(
 
   const MockChild = mock ?? (() => null);
 
-  const MockWrapper: FC<T> = props => {
+  const MockWrapper: FC<T> = (props) => {
     const [id] = useState(generateId);
 
     // Add / remove from register on mount / unmount
@@ -46,25 +46,25 @@ export function mockComponent<T>(
   mockComponentRegister.set(type, MockWrapper);
 
   return Object.assign(MockWrapper, {
-    mock: mockUtils(renderRegister)
+    mock: mockUtils(renderRegister),
   });
 }
 
 function mockUtils<T>(
-  renderRegister: RenderRegister<T>
+  renderRegister: RenderRegister<T>,
 ): MockedComponent<T>['mock'] {
   return {
     first: () => {
       const renders = Array.from(renderRegister.values());
       if (renders.length !== 1) {
         throw new Error(
-          `Attempted to get rendered props on componet that is currently rendered ${renders.length} times`
+          `Attempted to get rendered props on componet that is currently rendered ${renders.length} times`,
         );
       }
 
       return renders[0];
     },
-    all: () => Array.from(renderRegister.values())
+    all: () => Array.from(renderRegister.values()),
   };
 }
 

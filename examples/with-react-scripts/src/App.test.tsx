@@ -15,20 +15,20 @@ describe('with default mock implementation', () => {
 
   it('inferes prop types from real component', () => {
     expect(context.MockLink.mock.first().props.href).toMatchInlineSnapshot(
-      `"https://reactjs.org"`
+      `"https://reactjs.org"`,
     );
   });
 
   it('adds jest expect toBeRenderedWithProps', () => {
     expect(context.MockLink).toBeRenderedWithProps({
       children: 'Learn React',
-      href: 'https://reactjs.org'
+      href: 'https://reactjs.org',
     });
   });
 
   it('adds jest expect toBeRenderedWithPropsMatching', () => {
     expect(context.MockLink).toBeRenderedWithPropsMatching({
-      href: 'https://reactjs.org'
+      href: 'https://reactjs.org',
     });
   });
 
@@ -76,8 +76,8 @@ describe('with custom mock implementation', () => {
 
   const setup = () => {
     return {
-      Mock: mockComponent(Link, props => <a data-testid="🥦" {...props} />),
-      ...render(<App />)
+      Mock: mockComponent(Link, (props) => <a data-testid="🥦" {...props} />),
+      ...render(<App />),
     };
   };
 
