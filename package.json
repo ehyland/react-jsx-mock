@@ -13,8 +13,8 @@
     "build": "preconstruct build",
     "build:watch": "preconstruct watch",
     "postinstall": "preconstruct dev",
-    "version": "changeset version && yarn",
-    "release": "yarn build && changeset publish"
+    "ci:version": "changeset version && yarn",
+    "ci:release": "yarn build && changeset publish"
   },
   "workspaces": {
     "packages": [
