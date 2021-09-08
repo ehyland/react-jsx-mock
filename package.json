@@ -7,11 +7,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "dev": "preconstruct dev",
+    "test": "yarn workspace with-react-scripts test",
+    "lint": "echo 'TODO: setup eslint'",
     "build": "preconstruct build",
     "build:watch": "preconstruct watch",
     "postinstall": "preconstruct dev",
-    "version": "changeset version && yarn",
-    "release": "yarn build && changeset publish"
+    "ci:version": "changeset version && yarn",
+    "ci:release": "yarn build && changeset publish"
   },
   "workspaces": {
     "packages": [
@@ -28,6 +31,7 @@
     ]
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.1",
     "@changesets/cli": "^2.17.0",
     "@manypkg/cli": "^0.18.0",
     "@preconstruct/cli": "^2.1.1",
