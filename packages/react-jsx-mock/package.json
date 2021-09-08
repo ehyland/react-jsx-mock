@@ -1,6 +1,6 @@
 {
   "name": "react-jsx-mock",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mock components through JSX",
   "main": "dist/react-jsx-mock.cjs.js",
   "module": "dist/react-jsx-mock.esm.js",
