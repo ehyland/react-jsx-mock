@@ -7,6 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "dev": "preconstruct dev",
+    "test": "yarn workspace with-react-scripts test",
+    "lint": "echo 'TODO: setup eslint'",
     "build": "preconstruct build",
     "build:watch": "preconstruct watch",
     "postinstall": "preconstruct dev",
