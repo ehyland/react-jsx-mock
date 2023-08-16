@@ -1,0 +1,12 @@
+packages:
+  - 'packages/*'
+  - 'examples/*'
+  - '!**/test/**'
+
+  # "packages": [
+  #     "packages/*",
+  #     "examples/*"
+  #   ],
+  #   "nohoist": [
+  #     "with-react-scripts/react-scripts"
+  #   ]
