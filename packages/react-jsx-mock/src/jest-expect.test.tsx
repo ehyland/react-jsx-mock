@@ -64,4 +64,47 @@ describe('toBeRenderedWithProps()', () => {
       line: 2,
     });
   });
+
+  it('throws when component is rendered and not clause is used', () => {
+    render(
+      <>
+        <TestComponent message="hello" line={1} />
+        <TestComponent message="world" line={2} />
+      </>,
+    );
+
+    expect(() =>
+      expect(mockedComponent).not.toBeRenderedWithProps({
+        message: 'hello',
+        line: 1,
+      }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent not to be rendered with exact props
+        Expected: {"line": 1, "message": "hello"}
+        Received: 2 instances rendered
+          
+          - instance: 1 
+            props: {"line": 1, "message": "hello"}
+
+          - instance: 2 
+            props: {"line": 2, "message": "world"}"
+    `);
+
+    expect(() =>
+      expect(mockedComponent).not.toBeRenderedWithProps({
+        message: 'world',
+        line: 2,
+      }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent not to be rendered with exact props
+        Expected: {"line": 2, "message": "world"}
+        Received: 2 instances rendered
+          
+          - instance: 1 
+            props: {"line": 1, "message": "hello"}
+
+          - instance: 2 
+            props: {"line": 2, "message": "world"}"
+    `);
+  });
 });
