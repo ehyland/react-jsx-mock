@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "preconstruct dev",
-    "test": "pnpm run --filter with-react-scripts test",
+    "test": "pnpm test --recursive",
     "lint": "manypkg check && prettier --check . && tsc --noEmit",
     "format": "prettier --write .",
     "build": "preconstruct build",
@@ -38,5 +38,11 @@
     "prettier": "^3.0.2",
     "typescript": "^5.1.6"
   },
-  "packageManager": "pnpm@8.6.12"
+  "packageManager": "pnpm@8.6.12",
+  "devDependencies": {
+    "@happy-dom/jest-environment": "^10.10.2",
+    "@testing-library/react": "^14.0.0",
+    "jest-snapshot-serializer-ansi": "^1.0.0",
+    "prettier2": "npm:prettier@2"
+  }
 }
