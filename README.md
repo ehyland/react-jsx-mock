@@ -8,7 +8,7 @@ Mock components at the JSX level
 
 ## Setup
 
-See [examples/with-react-scripts](examples/with-react-scripts) for an example
+See [examples/with-babel](examples/with-babel) for an example
 
 ```tsx
 // src/setupTests.ts
