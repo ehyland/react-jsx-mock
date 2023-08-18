@@ -65,12 +65,16 @@ expect.extend({
     } else {
       return {
         message: () =>
-          `expected ${received.displayName} to be rendered with props
-        Expected: ${this.utils.printExpected(props)}
-        Received: ${this.utils.printReceived(
-          instances.map((inst) => inst.props),
-        )}
-        `,
+          `expected ${received.displayName} to be rendered with props containing
+  Expected: ${this.utils.printExpected(props)}
+  Received: ${instances.length} instances with the following props
+    ${instances
+      .map(
+        (inst, index) => `
+    - instance: ${index + 1} 
+      props: ${this.utils.printReceived(inst.props)}`,
+      )
+      .join('\n')}`,
         pass: false,
       };
     }

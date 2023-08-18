@@ -11,7 +11,7 @@ export type MockedComponent<T> = ComponentType<T> & {
   };
 };
 
-export function mockComponent<T>(
+export function mockComponent<T extends {}>(
   type: ComponentType<T>,
   mock?: ComponentType<T>,
 ): MockedComponent<T> {
@@ -21,7 +21,7 @@ export function mockComponent<T>(
   /** Tracks the currently rendered instances */
   const renderRegister: RenderRegister<T> = new Map();
 
-  const MockChild = mock ?? (() => null);
+  const MockChild: ComponentType<T> = mock ?? (() => null);
 
   const MockWrapper: FC<T> = (props) => {
     const [id] = useState(generateId);
@@ -37,7 +37,7 @@ export function mockComponent<T>(
 
     // Update rendered props on render
     useEffect(() => {
-      Object.assign(renderRegister.get(id), { props });
+      Object.assign(renderRegister.get(id)!, { props });
     });
 
     return <MockChild {...props} />;
@@ -47,6 +47,7 @@ export function mockComponent<T>(
 
   return Object.assign(MockWrapper, {
     mock: mockUtils(renderRegister),
+    displayName: `Mocked.${type.displayName ?? type.name ?? 'Component'}`,
   });
 }
 
@@ -58,7 +59,7 @@ function mockUtils<T>(
       const renders = Array.from(renderRegister.values());
       if (renders.length !== 1) {
         throw new Error(
-          `Attempted to get rendered props on componet that is currently rendered ${renders.length} times`,
+          `Attempted to get rendered props on component that is currently rendered ${renders.length} times`,
         );
       }
 

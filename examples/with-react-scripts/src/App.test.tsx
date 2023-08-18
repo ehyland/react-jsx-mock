@@ -13,7 +13,7 @@ describe('with default mock implementation', () => {
     context = setup();
   });
 
-  it('inferes prop types from real component', () => {
+  it('infers prop types from real component', () => {
     expect(context.MockLink.mock.first().props.href).toMatchInlineSnapshot(
       `"https://reactjs.org"`,
     );
@@ -34,8 +34,8 @@ describe('with default mock implementation', () => {
 
   it('tracks the props passed to the mock', () => {
     expect(context.MockLink.mock.first()).toMatchInlineSnapshot(`
-      Object {
-        "props": Object {
+      {
+        "props": {
           "children": "Learn React",
           "href": "https://reactjs.org",
         },
@@ -87,8 +87,8 @@ describe('with custom mock implementation', () => {
 
   it('tracks the props passed to the mock', () => {
     expect(context.Mock.mock.first()).toMatchInlineSnapshot(`
-      Object {
-        "props": Object {
+      {
+        "props": {
           "children": "Learn React",
           "href": "https://reactjs.org",
         },
@@ -98,9 +98,9 @@ describe('with custom mock implementation', () => {
 
   it('tracks the rendered instances', () => {
     expect(context.Mock.mock.all()).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "props": Object {
+      [
+        {
+          "props": {
             "children": "Learn React",
             "href": "https://reactjs.org",
           },
@@ -139,6 +139,51 @@ describe('with custom mock implementation', () => {
           </header>
         </div>
       </div>
+    `);
+  });
+});
+
+describe('error messages', () => {
+  let context: ReturnType<typeof setup>;
+
+  const TestComponent = (props: { message: string; importance: number }) =>
+    null;
+
+  const setup = () => {
+    return {
+      MockTestComponent: mockComponent(TestComponent),
+      ...render(
+        <div>
+          <TestComponent message="good morning" importance={1} />
+          <TestComponent message="how are you" importance={2} />
+          <TestComponent message="please buy stuff" importance={8} />
+        </div>,
+      ),
+    };
+  };
+
+  beforeEach(() => {
+    context = setup();
+  });
+
+  it('toBeRenderedWithPropsMatching renders a useful error message', () => {
+    expect(() =>
+      expect(context.MockTestComponent).toBeRenderedWithPropsMatching({
+        message: 'goodbye',
+      }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent to be rendered with props containing
+        Expected: ObjectContaining {"message": "goodbye"}
+        Received: 3 instances with the following props
+          
+          - instance: 1 
+            props: {"importance": 1, "message": "good morning"}
+
+          - instance: 2 
+            props: {"importance": 2, "message": "how are you"}
+
+          - instance: 3 
+            props: {"importance": 8, "message": "please buy stuff"}"
     `);
   });
 });
