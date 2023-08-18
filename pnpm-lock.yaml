@@ -45,7 +45,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
-  examples/with-react-scripts:
+  examples/with-babel:
     dependencies:
       '@babel/core':
         specifier: ^7.22.10
