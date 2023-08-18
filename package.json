@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "preconstruct dev",
-    "test": "pnpm test --recursive",
+    "test": "pnpm jest",
     "lint": "manypkg check && prettier --check . && tsc --noEmit",
     "format": "prettier --write .",
     "build": "preconstruct build",
