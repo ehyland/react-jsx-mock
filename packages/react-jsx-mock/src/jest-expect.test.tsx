@@ -108,3 +108,104 @@ describe('toBeRenderedWithProps()', () => {
     `);
   });
 });
+
+describe('toBeRenderedWithPropsMatching()', () => {
+  it('throws an error when props are not a partial match', () => {
+    render(
+      <>
+        <TestComponent message="hello" line={1} />
+        <TestComponent message="world" line={2} />
+      </>,
+    );
+
+    expect(() =>
+      expect(mockedComponent).toBeRenderedWithPropsMatching({ line: 3 }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent to be rendered with props containing
+        Expected: ObjectContaining {"line": 3}
+        Received: 2 instances rendered
+          
+          - instance: 1 
+            props: {"line": 1, "message": "hello"}
+
+          - instance: 2 
+            props: {"line": 2, "message": "world"}"
+    `);
+  });
+
+  it('throws an error when no components are rendered', () => {
+    render(
+      <>
+        <a href="#" />
+        <span>hello</span>
+      </>,
+    );
+
+    expect(() =>
+      expect(mockedComponent).toBeRenderedWithPropsMatching({ line: 1 }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent to be rendered with props containing
+        Expected: ObjectContaining {"line": 1}
+        Received: 0 instances rendered
+          "
+    `);
+  });
+
+  it('passes when component is rendered with partial match', () => {
+    render(
+      <>
+        <TestComponent message="hello" line={1} />
+        <TestComponent message="world" line={2} />
+      </>,
+    );
+
+    expect(mockedComponent).toBeRenderedWithPropsMatching({
+      line: 1,
+    });
+
+    expect(mockedComponent).toBeRenderedWithPropsMatching({
+      message: 'world',
+    });
+  });
+
+  it('throws when component is rendered and not clause is used', () => {
+    render(
+      <>
+        <TestComponent message="hello" line={1} />
+        <TestComponent message="world" line={2} />
+      </>,
+    );
+
+    expect(() =>
+      expect(mockedComponent).not.toBeRenderedWithPropsMatching({
+        message: 'hello',
+      }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent not to be rendered with props containing
+        Expected: ObjectContaining {"message": "hello"}
+        Received: 2 instances rendered
+          
+          - instance: 1 
+            props: {"line": 1, "message": "hello"}
+
+          - instance: 2 
+            props: {"line": 2, "message": "world"}"
+    `);
+
+    expect(() =>
+      expect(mockedComponent).not.toBeRenderedWithPropsMatching({
+        line: 2,
+      }),
+    ).toThrowErrorMatchingInlineSnapshot(`
+      "expected Mocked.TestComponent not to be rendered with props containing
+        Expected: ObjectContaining {"line": 2}
+        Received: 2 instances rendered
+          
+          - instance: 1 
+            props: {"line": 1, "message": "hello"}
+
+          - instance: 2 
+            props: {"line": 2, "message": "world"}"
+    `);
+  });
+});
