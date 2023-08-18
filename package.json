@@ -36,8 +36,8 @@
     "@preconstruct/cli": "^2.8.1",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.3",
-    "jest-snapshot-serializer-ansi": "^1.0.0",
     "jest": "^29.6.2",
+    "jest-snapshot-serializer-ansi": "^1.0.0",
     "prettier": "^3.0.2",
     "prettier2": "npm:prettier@2",
     "typescript": "^5.1.6"
