@@ -16,9 +16,10 @@ expect.extend({
 
     const pass = instances.some((inst) => this.equals(inst.props, props));
 
-    const message = (didPass: boolean) => () => `expected ${
-      received.displayName
-    } ${didPass ? 'not ' : ''}to be rendered with exact props
+    const message = (didPass: boolean) => () =>
+      `expected ${received.displayName} ${
+        didPass ? 'not ' : ''
+      }to be rendered with exact props
   Expected: ${this.utils.printExpected(props)}
   Received: ${instances.length} instances rendered
     ${instances
@@ -50,9 +51,10 @@ expect.extend({
     const props = expect.objectContaining(partialProps);
     const pass = instances.some((inst) => this.equals(inst.props, props));
 
-    const message = (didPass: boolean) => () => `expected ${
-      received.displayName
-    } ${didPass ? 'not ' : ''}to be rendered with props containing
+    const message = (didPass: boolean) => () =>
+      `expected ${received.displayName} ${
+        didPass ? 'not ' : ''
+      }to be rendered with props containing
   Expected: ${this.utils.printExpected(props)}
   Received: ${instances.length} instances rendered
     ${instances

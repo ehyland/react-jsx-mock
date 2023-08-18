@@ -10,7 +10,6 @@ const config: Config = {
   coverageProvider: 'v8',
   testEnvironment: '@happy-dom/jest-environment',
   testMatch: ['**/packages/**/?(*.)+(spec|test).[jt]s?(x)'],
-  prettierPath: require.resolve('prettier2'),
   snapshotSerializers: ['jest-snapshot-serializer-ansi'],
   // testMatch: ['./packages/**/test.[jt]s?(x)'],
 
