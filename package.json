@@ -2,7 +2,6 @@
   "name": "react-jsx-mock-mono",
   "version": "1.0.0",
   "description": "Mock components through JSX",
-  "main": "index.js",
   "author": "Eamon Hyland <ehyland90@gmail.com>",
   "license": "MIT",
   "private": true,
