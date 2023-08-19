@@ -2,13 +2,13 @@
   "name": "react-jsx-mock-mono",
   "version": "1.0.0",
   "description": "Mock components through JSX",
-  "main": "index.js",
   "author": "Eamon Hyland <ehyland90@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "preconstruct dev",
-    "test": "yarn workspace with-react-scripts test",
+    "test": "jest",
+    "test:ci": "CI=true jest && pnpm --filter with-babel run test",
     "lint": "manypkg check && prettier --check . && tsc --noEmit",
     "format": "prettier --write .",
     "build": "preconstruct build",
@@ -16,17 +16,8 @@
     "postinstall": "preconstruct dev",
     "add:change": "changeset add",
     "ci:copy-readme-to-packages": "cp ./README.md ./packages/react-jsx-mock/",
-    "ci:version": "changeset version && yarn && yarn format",
-    "ci:release": "yarn ci:copy-readme-to-packages && yarn build && changeset publish"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "examples/*"
-    ],
-    "nohoist": [
-      "with-react-scripts/react-scripts"
-    ]
+    "ci:version": "changeset version && pnpm install && pnpm format",
+    "ci:release": "pnpm ci:copy-readme-to-packages && pnpm build && changeset publish"
   },
   "preconstruct": {
     "packages": [
@@ -34,17 +25,21 @@
     ]
   },
   "dependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.15.0",
-    "@changesets/changelog-github": "^0.4.1",
-    "@changesets/cli": "^2.17.0",
-    "@manypkg/cli": "^0.18.0",
-    "@preconstruct/cli": "^2.1.1",
-    "@types/jest": "^27.0.1",
-    "jest": "^27.1.0",
-    "prettier": "^2.3.2",
-    "typescript": "^4.4.2"
-  }
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
+    "@happy-dom/jest-environment": "^10.10.2",
+    "@manypkg/cli": "^0.21.0",
+    "@preconstruct/cli": "^2.8.1",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.3",
+    "jest": "^29.6.2",
+    "jest-snapshot-serializer-ansi": "^1.0.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "pnpm@8.6.12"
 }
