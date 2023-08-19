@@ -52,11 +52,6 @@ describe('with default mock implementation', () => {
           <header
             class="App-header"
           >
-            <img
-              alt="logo"
-              class="App-logo"
-              src="logo.svg"
-            />
             <p>
               Edit 
               <code>
@@ -118,11 +113,6 @@ describe('with custom mock implementation', () => {
           <header
             class="App-header"
           >
-            <img
-              alt="logo"
-              class="App-logo"
-              src="logo.svg"
-            />
             <p>
               Edit 
               <code>
@@ -174,7 +164,7 @@ describe('error messages', () => {
     ).toThrowErrorMatchingInlineSnapshot(`
       "expected Mocked.TestComponent to be rendered with props containing
         Expected: ObjectContaining {"message": "goodbye"}
-        Received: 3 instances with the following props
+        Received: 3 instances rendered
           
           - instance: 1 
             props: {"importance": 1, "message": "good morning"}
