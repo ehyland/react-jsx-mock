@@ -1,5 +1,11 @@
 # react-jsx-mock
 
+## 0.3.0
+
+### Minor Changes
+
+- [#9](https://github.com/ehyland/react-jsx-mock/pull/9) [`18ce243`](https://github.com/ehyland/react-jsx-mock/commit/18ce243f6ac79e821e444e30f496506237e1a6e7) Thanks [@ehyland](https://github.com/ehyland)! - BREAKING CHANGE: rename `first()` to `get()`
+
 ## 0.2.0
 
 ### Minor Changes
