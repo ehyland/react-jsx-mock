@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "CI=true jest"
   },
   "dependencies": {
     "@babel/core": "^7.22.10",

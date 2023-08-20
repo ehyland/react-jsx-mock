@@ -41,8 +41,8 @@ expect(MockMenu).toBeRenderedWithProps(expectedProps);
 // assert the mock is rendered with a partial set of props
 expect(MockMenu).toBeRenderedWithPropsMatching({ items: expectedItems });
 
-// access first currently rendered props directly
-expect(MockMenu.mock.first().props.href).toBe('https://reactjs.org');
+// access currently rendered props (throws if not rendered once)
+expect(MockMenu.mock.get().props.href).toBe('https://reactjs.org');
 
 // access all currently rendered props directly
 expect(MockMenu.mock.all().map(({ props }) => props.id)).toEqual([

@@ -6,7 +6,15 @@ export type RenderMeta<T> = { props: T };
 export type RenderRegister<T> = Map<number, RenderMeta<T>>;
 export type MockedComponent<T> = ComponentType<T> & {
   mock: {
-    first: () => RenderMeta<T>;
+    /**
+     * Returns the rendered component info.
+     * Throws an error if component isn't rendered exactly once
+     */
+    get: () => RenderMeta<T>;
+
+    /**
+     * Returns all rendered components info
+     */
     all: () => RenderMeta<T>[];
   };
 };
@@ -55,7 +63,7 @@ function mockUtils<T>(
   renderRegister: RenderRegister<T>,
 ): MockedComponent<T>['mock'] {
   return {
-    first: () => {
+    get: () => {
       const renders = Array.from(renderRegister.values());
       if (renders.length !== 1) {
         throw new Error(

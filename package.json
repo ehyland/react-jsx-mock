@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "preconstruct dev",
     "test": "jest",
-    "test:ci": "CI=true jest && pnpm --filter with-babel run test",
+    "test:ci": "CI=true jest && pnpm --stream --parallel --filter './examples/**' run test:ci",
     "lint": "manypkg check && prettier --check . && tsc --noEmit",
     "format": "prettier --write .",
     "build": "preconstruct build",
