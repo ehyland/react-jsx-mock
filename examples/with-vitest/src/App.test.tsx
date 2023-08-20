@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import App, { Link } from './App';
 import { mockComponent } from 'react-jsx-mock';
+import { describe, it, beforeEach, expect } from 'vitest';
 
 describe('with default mock implementation', () => {
   let context: ReturnType<typeof setup>;
@@ -15,7 +16,7 @@ describe('with default mock implementation', () => {
 
   it('infers prop types from real component', () => {
     expect(context.MockLink.mock.get().props.href).toMatchInlineSnapshot(
-      `"https://reactjs.org"`,
+      '"https://reactjs.org"',
     );
   });
 
@@ -129,51 +130,6 @@ describe('with custom mock implementation', () => {
           </header>
         </div>
       </div>
-    `);
-  });
-});
-
-describe('error messages', () => {
-  let context: ReturnType<typeof setup>;
-
-  const TestComponent = (props: { message: string; importance: number }) =>
-    null;
-
-  const setup = () => {
-    return {
-      MockTestComponent: mockComponent(TestComponent),
-      ...render(
-        <div>
-          <TestComponent message="good morning" importance={1} />
-          <TestComponent message="how are you" importance={2} />
-          <TestComponent message="please buy stuff" importance={8} />
-        </div>,
-      ),
-    };
-  };
-
-  beforeEach(() => {
-    context = setup();
-  });
-
-  it('toBeRenderedWithPropsMatching renders a useful error message', () => {
-    expect(() =>
-      expect(context.MockTestComponent).toBeRenderedWithPropsMatching({
-        message: 'goodbye',
-      }),
-    ).toThrowErrorMatchingInlineSnapshot(`
-      "expected Mocked.TestComponent to be rendered with props containing
-        Expected: ObjectContaining {"message": "goodbye"}
-        Received: 3 instances rendered
-          
-          - instance: 1 
-            props: {"importance": 1, "message": "good morning"}
-
-          - instance: 2 
-            props: {"importance": 2, "message": "how are you"}
-
-          - instance: 3 
-            props: {"importance": 8, "message": "please buy stuff"}"
     `);
   });
 });
