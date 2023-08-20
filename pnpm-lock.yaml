@@ -161,7 +161,7 @@ importers:
         specifier: ^10.10.4
         version: 10.10.4
       react-jsx-mock:
-        specifier: 0.2.0
+        specifier: 0.3.0
         version: link:../../packages/react-jsx-mock
       typescript:
         specifier: ^5.1.6

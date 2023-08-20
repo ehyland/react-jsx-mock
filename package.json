@@ -16,7 +16,7 @@
     "postinstall": "preconstruct dev",
     "add:change": "changeset add",
     "ci:copy-readme-to-packages": "cp ./README.md ./packages/react-jsx-mock/",
-    "ci:version": "changeset version && pnpm install && pnpm format",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm format",
     "ci:release": "pnpm ci:copy-readme-to-packages && pnpm build && changeset publish"
   },
   "preconstruct": {
