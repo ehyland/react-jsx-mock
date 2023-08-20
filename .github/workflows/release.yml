@@ -14,20 +14,25 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@main
-
-      - name: Setup Node.js 14.x
-        uses: actions/setup-node@main
         with:
-          node-version: 14.x
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.8.1
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: corepack
+        run: corepack enable
 
       - name: Install Dependencies
-        run: yarn --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Create release PR or publish to npm
-        uses: changesets/action@master
+        uses: changesets/action@v1.4.5
         with:
-          version: yarn ci:version
-          publish: yarn ci:release
+          version: pnpm ci:version
+          publish: pnpm ci:release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}

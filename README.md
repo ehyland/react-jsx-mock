@@ -8,7 +8,7 @@ Mock components at the JSX level
 
 ## Setup
 
-See [examples/with-react-scripts](examples/with-react-scripts) for an example
+See [examples/with-babel](examples/with-babel) for an example
 
 ```tsx
 // src/setupTests.ts
@@ -41,8 +41,8 @@ expect(MockMenu).toBeRenderedWithProps(expectedProps);
 // assert the mock is rendered with a partial set of props
 expect(MockMenu).toBeRenderedWithPropsMatching({ items: expectedItems });
 
-// access first currently rendered props directly
-expect(MockMenu.mock.first().props.href).toBe('https://reactjs.org');
+// access currently rendered props (throws if not rendered once)
+expect(MockMenu.mock.get().props.href).toBe('https://reactjs.org');
 
 // access all currently rendered props directly
 expect(MockMenu.mock.all().map(({ props }) => props.id)).toEqual([
