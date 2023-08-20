@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@1.6.1/schema.json",
+  "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
   "changelog": [
     "@changesets/changelog-github",
     { "repo": "ehyland/react-jsx-mock" }
@@ -9,5 +9,5 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["with-babel"]
+  "ignore": ["with-**"]
 }
