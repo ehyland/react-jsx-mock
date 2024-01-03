@@ -31,7 +31,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.26.2",
-    "@happy-dom/jest-environment": "^10.10.4",
+    "@happy-dom/jest-environment": "^12.0.0",
     "@manypkg/cli": "^0.21.0",
     "@preconstruct/cli": "^2.8.1",
     "@testing-library/react": "^14.0.0",
