@@ -41,5 +41,5 @@
     "prettier": "^2.8.8",
     "typescript": "^5.1.6"
   },
-  "packageManager": "pnpm@8.15.2"
+  "packageManager": "pnpm@8.15.3"
 }
