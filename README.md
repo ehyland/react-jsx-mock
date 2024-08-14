@@ -1,4 +1,4 @@
-# React JSX Mock
+# React JSX Mock <!-- omit from toc -->
 
 Mock components at the JSX level
 
@@ -6,7 +6,49 @@ Mock components at the JSX level
 - Custom jest matches
 - Types are infered from the real implementation
 
-## Setup
+## Table of contents <!-- omit from toc -->
+
+- [Setup (with vite / vitest)](#setup-with-vite--vitest)
+- [Setup (with babel)](#setup-with-babel)
+- [API](#api)
+- [Inspiration](#inspiration)
+
+## Setup (with vite / vitest)
+
+See [examples/with-vitest](examples/with-vitest) for an example
+
+Add `jsxImportSource` option to react vite plugin
+
+```tsx
+// vite.config.ts
+
+import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react-swc';
+
+export default defineConfig({
+  plugins: [
+    react({
+      jsxImportSource: process.env.VITEST ? 'react-jsx-mock' : 'react',
+    }),
+  ],
+  test: {
+    setupFiles: 'src/testSetup.ts',
+    environment: 'happy-dom',
+    globals: true,
+  },
+});
+```
+
+Add matchers
+
+```tsx
+// src/setupTests.ts
+
+// Add custom jest matchers
+import 'react-jsx-mock/jest-expect';
+```
+
+## Setup (with babel)
 
 See [examples/with-babel](examples/with-babel) for an example
 
