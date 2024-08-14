@@ -1,5 +1,11 @@
 # react-jsx-mock
 
+## 1.0.0
+
+### Major Changes
+
+- [`e9d3f76`](https://github.com/ehyland/react-jsx-mock/commit/e9d3f7665f2763a30580b608ab446c24c0f488f1) Thanks [@ehyland](https://github.com/ehyland)! - Add `mock.replace()` and `jsxImportSource` install method
+
 ## 0.3.0
 
 ### Minor Changes
