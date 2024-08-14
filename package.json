@@ -34,7 +34,7 @@
     "@happy-dom/jest-environment": "^10.10.4",
     "@manypkg/cli": "^0.21.0",
     "@preconstruct/cli": "^2.8.1",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.5.3",
     "jest": "^29.6.2",
     "jest-snapshot-serializer-ansi": "^1.0.0",
