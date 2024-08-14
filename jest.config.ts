@@ -11,6 +11,7 @@ const config: Config = {
   testEnvironment: '@happy-dom/jest-environment',
   testMatch: ['**/packages/**/?(*.)+(spec|test).[jt]s?(x)'],
   snapshotSerializers: ['jest-snapshot-serializer-ansi'],
+  transformIgnorePatterns: [],
 };
 
 export default config;

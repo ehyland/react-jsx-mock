@@ -72,7 +72,9 @@ describe('with custom mock implementation', () => {
 
   const setup = () => {
     return {
-      Mock: mockComponent(Link, (props) => <a data-testid="🥦" {...props} />),
+      MockLink: mockComponent(Link, (props) => (
+        <a data-testid="🥦" {...props} />
+      )),
       ...render(<App />),
     };
   };
@@ -82,7 +84,7 @@ describe('with custom mock implementation', () => {
   });
 
   it('tracks the props passed to the mock', () => {
-    expect(context.Mock.mock.get()).toMatchInlineSnapshot(`
+    expect(context.MockLink.mock.get()).toMatchInlineSnapshot(`
       {
         "props": {
           "children": "Learn React",
@@ -93,7 +95,7 @@ describe('with custom mock implementation', () => {
   });
 
   it('tracks the rendered instances', () => {
-    expect(context.Mock.mock.all()).toMatchInlineSnapshot(`
+    expect(context.MockLink.mock.all()).toMatchInlineSnapshot(`
       [
         {
           "props": {

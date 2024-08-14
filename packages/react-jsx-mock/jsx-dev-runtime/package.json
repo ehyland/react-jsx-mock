@@ -1,0 +1,4 @@
+{
+  "main": "dist/react-jsx-mock-jsx-dev-runtime.cjs.js",
+  "module": "dist/react-jsx-mock-jsx-dev-runtime.esm.js"
+}

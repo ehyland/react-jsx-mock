@@ -11,6 +11,7 @@ const config: Config = {
   snapshotSerializers: ['jest-snapshot-serializer-ansi'],
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {},
+  transformIgnorePatterns: [],
 };
 
 export default config;

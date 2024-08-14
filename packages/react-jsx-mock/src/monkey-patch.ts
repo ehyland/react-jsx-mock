@@ -1,3 +1,5 @@
+declare function require(path: string): any;
+
 const React = require('react');
 const jsxDevRuntime = require('react/jsx-dev-runtime');
 const jsxRuntime = require('react/jsx-runtime');
