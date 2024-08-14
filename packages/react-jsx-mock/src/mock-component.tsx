@@ -6,6 +6,7 @@ export type RenderMeta<T> = { props: T };
 export type RenderRegister<T> = Map<number, RenderMeta<T>>;
 export type MockedComponent<T> = ComponentType<T> & {
   mock: {
+    replace: (component: ComponentType<T>) => void;
     /**
      * Returns the rendered component info.
      * Throws an error if component isn't rendered exactly once
@@ -25,13 +26,12 @@ export function mockComponent<T extends {}>(
 ): MockedComponent<T> {
   let idSequence = 0;
   const generateId = () => idSequence++;
+  let MockContent: ComponentType<T> = mock ?? (() => null);
 
   /** Tracks the currently rendered instances */
   const renderRegister: RenderRegister<T> = new Map();
 
-  const MockChild: ComponentType<T> = mock ?? (() => null);
-
-  const MockWrapper: FC<T> = (props) => {
+  const MockComponent: FC<T> = (props) => {
     const [id] = useState(generateId);
 
     // Add / remove from register on mount / unmount
@@ -48,23 +48,28 @@ export function mockComponent<T extends {}>(
       Object.assign(renderRegister.get(id)!, { props });
     });
 
-    return <MockChild {...props} />;
+    return <MockContent {...props} />;
   };
 
-  mockComponentRegister.set(type, MockWrapper);
+  mockComponentRegister.set(type, MockComponent);
 
-  return Object.assign(MockWrapper, {
-    mock: mockUtils(renderRegister),
+  return Object.assign(MockComponent, {
+    mock: mockUtils({
+      renderRegister,
+      replace: (component) => (MockContent = component),
+    }),
     displayName: `Mocked.${type.displayName ?? type.name ?? 'Component'}`,
   });
 }
 
-function mockUtils<T>(
-  renderRegister: RenderRegister<T>,
-): MockedComponent<T>['mock'] {
+function mockUtils<T>(args: {
+  renderRegister: RenderRegister<T>;
+  replace: (component: ComponentType<T>) => void;
+}): MockedComponent<T>['mock'] {
   return {
+    replace: args.replace,
     get: () => {
-      const renders = Array.from(renderRegister.values());
+      const renders = Array.from(args.renderRegister.values());
       if (renders.length !== 1) {
         throw new Error(
           `Attempted to get rendered props on component that is currently rendered ${renders.length} times`,
@@ -73,7 +78,7 @@ function mockUtils<T>(
 
       return renders[0];
     },
-    all: () => Array.from(renderRegister.values()),
+    all: () => Array.from(args.renderRegister.values()),
   };
 }
 

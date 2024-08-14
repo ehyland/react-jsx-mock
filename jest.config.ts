@@ -12,6 +12,7 @@ const config: Config = {
   testMatch: ['**/packages/**/?(*.)+(spec|test).[jt]s?(x)'],
   snapshotSerializers: ['jest-snapshot-serializer-ansi'],
   transformIgnorePatterns: [],
+  prettierPath: require.resolve('prettier-2'),
 };
 
 export default config;

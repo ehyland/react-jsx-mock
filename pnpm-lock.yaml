@@ -50,6 +50,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      prettier-2:
+        specifier: npm:prettier@^2
+        version: prettier@2.8.8
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
