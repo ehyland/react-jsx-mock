@@ -27,8 +27,8 @@ importers:
         specifier: ^2.26.2
         version: 2.26.2
       '@happy-dom/jest-environment':
-        specifier: ^10.10.4
-        version: 10.10.4
+        specifier: ^14.0.0
+        version: 14.12.3
       '@manypkg/cli':
         specifier: ^0.21.0
         version: 0.21.0
@@ -1919,13 +1919,14 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@happy-dom/jest-environment@10.10.4:
-    resolution: {integrity: sha512-Gs+3nl7RNuhEeO2hqzYUfKUDNKE1yy6V85tQVw3NpiX8VkYSqng1E8zDbM1yH8jWypqdTNL9vjmTrLR9xeFz9g==}
+  /@happy-dom/jest-environment@14.12.3:
+    resolution: {integrity: sha512-sUMBNZIdGbTGt+BG2D5MKg5QBHLoBEYa9NfZr19h8v2qLiuXuFb/Bnh1+NJ0t1K0Wlcq0PlL2IKV9Cqzh2B+kw==}
+    engines: {node: '>=16.0.0'}
     dependencies:
       '@jest/environment': 29.6.2
       '@jest/fake-timers': 29.6.2
       '@jest/types': 29.6.1
-      happy-dom: 10.10.4
+      happy-dom: 14.12.3
       jest-mock: 29.6.2
       jest-util: 29.6.2
     dev: false
@@ -4448,6 +4449,16 @@ packages:
       webidl-conversions: 7.0.0
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
+    dev: true
+
+  /happy-dom@14.12.3:
+    resolution: {integrity: sha512-vsYlEs3E9gLwA1Hp+w3qzu+RUDFf4VTT8cyKqVICoZ2k7WM++Qyd2LwzyTi5bqMJFiIC/vNpTDYuxdreENRK/g==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      entities: 4.5.0
+      webidl-conversions: 7.0.0
+      whatwg-mimetype: 3.0.0
+    dev: false
 
   /hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
