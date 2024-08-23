@@ -27,8 +27,8 @@ importers:
         specifier: ^2.27.7
         version: 2.27.7
       '@happy-dom/jest-environment':
-        specifier: ^14.12.3
-        version: 14.12.3
+        specifier: ^15.0.0
+        version: 15.0.0
       '@manypkg/cli':
         specifier: ^0.21.4
         version: 0.21.4
@@ -1016,9 +1016,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@happy-dom/jest-environment@14.12.3':
-    resolution: {integrity: sha512-sUMBNZIdGbTGt+BG2D5MKg5QBHLoBEYa9NfZr19h8v2qLiuXuFb/Bnh1+NJ0t1K0Wlcq0PlL2IKV9Cqzh2B+kw==}
-    engines: {node: '>=16.0.0'}
+  '@happy-dom/jest-environment@15.0.0':
+    resolution: {integrity: sha512-920OZjTOcKAsg65khFS+VzxC1mczIopBV9l15g/W4J5sDWX4wu/CTh49xkyEeC4hcjVRhDj4zJ65BGOOGnj2Bg==}
+    engines: {node: '>=18.0.0'}
 
   '@istanbuljs/load-nyc-config@1.1.0':
     resolution: {integrity: sha512-VjeHSlIzpv/NyD3N0YuHfXOPDIixcA1q2ZV98wsMqcYlPmv2n3Yb2lYP9XMElnaFVXg5A7YLTeLu6V84uQDjmQ==}
@@ -2149,6 +2149,10 @@ packages:
   happy-dom@14.12.3:
     resolution: {integrity: sha512-vsYlEs3E9gLwA1Hp+w3qzu+RUDFf4VTT8cyKqVICoZ2k7WM++Qyd2LwzyTi5bqMJFiIC/vNpTDYuxdreENRK/g==}
     engines: {node: '>=16.0.0'}
+
+  happy-dom@15.0.0:
+    resolution: {integrity: sha512-DsvANUcxxY20iCo3Yllm7dqwzPVPduGfVFxa7mONwMBLczFeQgkN0LpDir1kIY322JMh+hrcPV3aGLyHCESDlA==}
+    engines: {node: '>=18.0.0'}
 
   hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
@@ -4667,12 +4671,12 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@happy-dom/jest-environment@14.12.3':
+  '@happy-dom/jest-environment@15.0.0':
     dependencies:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      happy-dom: 14.12.3
+      happy-dom: 15.0.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -5991,6 +5995,12 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   happy-dom@14.12.3:
+    dependencies:
+      entities: 4.5.0
+      webidl-conversions: 7.0.0
+      whatwg-mimetype: 3.0.0
+
+  happy-dom@15.0.0:
     dependencies:
       entities: 4.5.0
       webidl-conversions: 7.0.0
